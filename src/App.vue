@@ -1,10 +1,29 @@
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <router-view />
 </template>
+
+<script lang="ts">
+// @ is an alias to /src
+import authUser from './APIactions/actions'
+
+export default {
+  methods: {
+    goHome () {
+      // this.$route.push({ name: 'home' })
+    },
+    goAbout () {
+      // this.$route.push({ name: 'about' })
+    },
+    goProducts () {
+      // this.$route.push({ name: 'product' })
+    },
+    async goLogin () {
+      await authUser('john@mail.com', 'changeme')
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
