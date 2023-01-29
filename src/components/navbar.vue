@@ -93,9 +93,14 @@ export default defineComponent({
 }
 .titleLine{
   display: flex;
+  margin-bottom: 10px;
+}
+.title {
+  margin-left: 10px;
+  align-self: center;
 }
 .logo{
-  width: 50px;
-  height: 50px;
+  max-width: 75px;
+  height: fit-content;
 }
 </style>
