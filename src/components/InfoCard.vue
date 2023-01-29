@@ -3,7 +3,8 @@
     <ImageCarousel v-if="imgList.length > 0" class="image" :imgList="imgList"/>
     <div class="info" v-if="info.length > 0">
       <p v-for="item in info" :key="item.name">
-        {{item.name}}: {{ item.value }}
+        <span class="bold"> {{ item.name }}: </span>
+        <span> {{ item.value }} </span>
       </p>
     </div>
   </div>
@@ -11,11 +12,9 @@
 
 <script lang="ts">
 
-import { defineComponent, onMounted, reactive, PropType } from 'vue'
-import { UserData } from '@/models/UserData'
+import { defineComponent, PropType } from 'vue'
 import { LabeledInfo } from '@/models/LabeledInfo'
 import ImageCarousel from '@/components/ImageCorousel.vue'
-import apiCalls from '@/api/calls'
 
 export default defineComponent({
   name: 'InfoCard',
@@ -41,18 +40,6 @@ export default defineComponent({
       default: false
     }
   },
-  setup () {
-    const data = reactive({
-      userData: null as null | UserData
-    })
-
-    onMounted(() => {
-      apiCalls.getCurrentUserData().then((userData) => {
-        data.userData = userData
-      })
-    })
-    return data
-  },
   methods: {
     click () {
       if (this.interactive) {
@@ -68,15 +55,21 @@ export default defineComponent({
   width: 50%;
   margin-left: 30px;
   margin-right: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .info {
+  text-align: left;
+  width: 50%;
   margin-top: auto;
   margin-bottom: auto;
+}
+.bold {
+  font-weight: bold;
 }
 .info-card {
   display:flex;
 }
-
 .interactive:hover{
   background-color: #eee;
   cursor:pointer;

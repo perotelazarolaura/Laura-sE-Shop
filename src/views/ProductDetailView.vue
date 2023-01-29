@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Product Detail</h1>
+    <h2 class="title">Product Detail</h2>
     <div v-if="cardInfo" class="product-detail">
       <InfoCard :id="cardInfo.id" :imgList="cardInfo.images" :info="cardInfo.info"/>
     </div>
@@ -71,9 +71,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-h1 {
-  color: blue;
-}
 .product-detail {
   width: 60%;
   margin-left: 20%;

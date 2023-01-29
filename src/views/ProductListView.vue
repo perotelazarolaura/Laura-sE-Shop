@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Products</h1>
+    <h2 class="title">Products</h2>
     <input class="filter" type="text" v-model="filterName" placeholder="Filter products by name"/>
     <div class="product-grid">
       <div class="product-card" v-for="item in cardInfo" :key="item.id">
@@ -82,9 +82,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-h1 {
-  color: blue;
-}
 .filter {
   width: 90%;
   height: 40px;

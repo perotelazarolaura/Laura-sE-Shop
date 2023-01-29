@@ -1,11 +1,11 @@
 <template>
-  <img class="logo" src="../assets/logo.png">
-  <h1 id="SignTitle">Sign In</h1>
+  <img src="../assets/logo.png">
+  <h2 class="title">Sign In</h2>
   <br/>
   <div class="register">
     <input type="text" v-model="email" placeholder="Please enter your E-mail"/>
     <input type="password" v-model="password" placeholder="Please enter a Password"/>
-    <p><button class="Buttons" id="submitButton" @click="signIn">Sign In</button></p>
+    <p><button class="btn" id="submitButton" @click="signIn">Sign In</button></p>
   </div>
   <p class="error-message" v-if="errorMessage">
     {{ errorMessage }}
@@ -25,7 +25,7 @@ export default defineComponent({
     const store = useStore()
     const router = useRouter()
     const isLogged = computed(() => { return store.state.authData != null })
-    onMounted(() => {
+    onMounted(() => { // Stops the user from going back to the signin page
       if (isLogged.value) {
         router.push({ name: 'products' })
       }
@@ -38,8 +38,6 @@ export default defineComponent({
       errorMessage: ref('')
     }
   },
-
-  // I call a function that tells the button what to do
   methods: {
     signIn () {
       if (!this.validate()) { return }
@@ -67,15 +65,10 @@ export default defineComponent({
       return true
     }
   }
-  // Stops the user from going back to the signin page
-
 })
 </script>
-<style>
+<style scoped>
 
-.logo{
-  width: auto
-}
 .register input{
   width: 300px;
   height: 40px;
@@ -83,54 +76,6 @@ export default defineComponent({
   display: block;
   margin: auto;
 }
-#SignTitle{
-  color: #7c795d;
-  font-family: 'Trocchi', serif;
-  font-size: 45px;
-  font-weight: normal;
-  line-height: 48px;
-  margin: 0;
-}
-.Buttons {
-  width: 325px;
-  background-color: #0095ff;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.15385;
-  margin: 0;
-  outline: none;
-  padding: 8px .8em;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  white-space: nowrap;
-}
-.Buttons:hover,
-.Buttons:focus {
-  background-color: #07c;
-}
-
-.Buttons:focus {
-  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
-}
-
-.Buttons:active {
-  background-color: #0064bd;
-  box-shadow: none;
-}
-
 .error-message {
   color:red
 }

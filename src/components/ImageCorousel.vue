@@ -55,7 +55,7 @@ export default defineComponent({
 
 </script>
 
-<style>
+<style scoped>
 .card-img {
   position: relative;
 }

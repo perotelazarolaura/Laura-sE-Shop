@@ -1,6 +1,6 @@
 <template>
   <div v-if="data.userData">
-    <h1>Profile</h1>
+    <h2 class="title">Profile</h2>
     <div class="profile-data">
       <InfoCard :id="data.userData.id" :imgList="[data.userData.avatar]" :info="info"/>
     </div>
@@ -14,6 +14,7 @@ import { UserData } from '@/models/UserData'
 import { LabeledInfo } from '@/models/LabeledInfo'
 import InfoCard from '@/components/InfoCard.vue'
 import apiCalls from '@/api/calls'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'ProfileView',
@@ -21,6 +22,7 @@ export default defineComponent({
     InfoCard
   },
   setup () {
+    const router = useRouter()
     const data = reactive({
       userData: null as null | UserData
     })
@@ -40,9 +42,13 @@ export default defineComponent({
       ]
     })
     onMounted(() => {
-      apiCalls.getCurrentUserData().then((userData) => {
-        data.userData = userData
-      })
+      apiCalls.getCurrentUserData()
+        .then((userData) => {
+          data.userData = userData
+        })
+        .catch(() => {
+          router.back()
+        })
     })
     return {
       data,
@@ -53,9 +59,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-h1 {
-    color: blue;
-}
 .profile-data {
   width: 100%;
   justify-content: center;
