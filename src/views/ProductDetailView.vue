@@ -9,7 +9,7 @@
 
 <script lang="ts">
 
-import { defineComponent, reactive, onMounted, watch, computed, ref } from 'vue'
+import { defineComponent, reactive, onMounted, computed } from 'vue'
 import { ProductData } from '@/models/ProductData'
 import { LabeledInfo } from '@/models/LabeledInfo'
 import InfoCard from '@/components/InfoCard.vue'

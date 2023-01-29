@@ -11,7 +11,7 @@
 
 <script lang="ts">
 
-import { defineComponent, onMounted, reactive, computed, PropType, ref } from 'vue'
+import { defineComponent, onMounted, reactive, PropType } from 'vue'
 import { UserData } from '@/models/UserData'
 import { LabeledInfo } from '@/models/LabeledInfo'
 import ImageCarousel from '@/components/ImageCorousel.vue'
