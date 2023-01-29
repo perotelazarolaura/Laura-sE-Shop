@@ -1,6 +1,9 @@
 <template>
   <nav>
-    <h1 class="title">{{ title }}</h1>
+    <div class="titleLine">
+      <img class="logo" src="../assets/logo.png">
+      <h1 class="title">{{ title }}</h1>
+    </div>
     <div class="navbar">
       <button @click="goProducts()">
         Products
@@ -87,5 +90,12 @@ export default defineComponent({
 }
 .navbar > button:last-child {
   margin-left: auto;
+}
+.titleLine{
+  display: flex;
+}
+.logo{
+  width: 50px;
+  height: 50px;
 }
 </style>
