@@ -19,8 +19,8 @@ export default defineComponent({
   },
   setup () {
     const store = useStore()
+    // This is sent to the navbar so it shows the appropiate options depending on the user's login status
     const isLogged = computed(() => { return store.state.authData != null })
-    // If the user isn't loged in he can only be in the login page.
     return {
       isLogged
     }

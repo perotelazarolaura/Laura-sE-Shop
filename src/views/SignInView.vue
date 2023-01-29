@@ -40,19 +40,20 @@ export default defineComponent({
   },
   methods: {
     signIn () {
-      if (!this.validate()) { return }
+      if (!this.validate()) { return } // If the input validation retunrs an error we do not call the API.
       apiCalls.authUser(this.email, this.password)
         .then((authData:AuthData) => {
           this.errorMessage = ''
           this.login(authData)
           this.$router.push({ name: 'products' })
         })
-        .catch(() => {
+        .catch(() => { // Creates an error message when a wrong login is used
           this.errorMessage = 'Invalid login'
           console.error('invalid login')
         })
     },
     validate () {
+      // We check the email's format is correct using a regular expression and we also check the fields are not empty
       const validEmail = this.email.match(
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
       if (!this.email || !validEmail) {

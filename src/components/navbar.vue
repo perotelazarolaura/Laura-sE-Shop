@@ -50,6 +50,7 @@ export default defineComponent({
     goSignIn () {
       this.$router.push({ name: 'signin' })
     },
+    // It the use rselects LogOut he gets redirected to the sign in page
     signOut () {
       this.logout()
       this.$router.push({ name: 'signin' })

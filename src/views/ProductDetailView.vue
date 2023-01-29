@@ -30,6 +30,7 @@ export default defineComponent({
     const data = reactive({
       product: null as null | ProductData
     })
+    // Here the input data is generated for the info card components, from the product information returned by the API
     const cardInfo = computed(() => {
       if (!data.product) { return undefined }
       return {
@@ -55,7 +56,7 @@ export default defineComponent({
         ]
       }
     })
-
+    // The product information is retrieved from the API when the component is mounted.
     onMounted(() => {
       apiCalls.getSingleProduct(props.id).then((product) => {
         data.product = product

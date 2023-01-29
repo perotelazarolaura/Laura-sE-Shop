@@ -3,7 +3,7 @@ import { AuthData } from '@/models/AuthData'
 import { UserData } from '@/models/UserData'
 import { ProductData } from '@/models/ProductData'
 import { AxiosResponse } from 'axios'
-
+// We define a class with a method for every call we do to the API
 class ApiCalls {
   async authUser (email:string, password:string):Promise<AuthData> {
     const { data } = await fakeShopApi.post<unknown, AxiosResponse<AuthData>>(

@@ -15,7 +15,7 @@ import { LabeledInfo } from '@/models/LabeledInfo'
 import InfoCard from '@/components/InfoCard.vue'
 import apiCalls from '@/api/calls'
 import { useRouter } from 'vue-router'
-
+// This renders the user's profile
 export default defineComponent({
   name: 'ProfileView',
   components: {
@@ -47,6 +47,7 @@ export default defineComponent({
           data.userData = userData
         })
         .catch(() => {
+          // If there is an error it sends the user back to the previous page
           router.back()
         })
     })

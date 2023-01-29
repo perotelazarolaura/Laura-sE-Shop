@@ -27,7 +27,7 @@ export default defineComponent({
     const filterName = ref('')
     const data = reactive({
       products: null as null | ProductData[]
-    })
+    })// It creates the products as it's fetched from the API
     const cardInfo = computed(() => {
       const result = data.products?.map((item) => {
         return {
@@ -50,7 +50,7 @@ export default defineComponent({
         }
       })
       return result
-    })
+    })// The content of the filter input is observed and we retrieve products when the filter is longer than 3 characters.
     watch(filterName, (newValue) => {
       let filter:string|undefined = newValue
       if (newValue.length < 3) {
@@ -74,6 +74,7 @@ export default defineComponent({
     }
   },
   methods: {
+    // Redirects the user to the product detail page when a card is clicked on.
     clickCard (productId:number) {
       this.$router.push({ name: 'product-detail', params: { id: productId } })
     }

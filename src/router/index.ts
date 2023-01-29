@@ -5,7 +5,7 @@ import ProductDetailView from '@/views/ProductDetailView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 
 const routes: Array<RouteRecordRaw> = [
-  {
+  { // This route shows the same as the /products as I have designed the home page to be the product page
     path: '/',
     name: 'home',
     component: ProductListView
