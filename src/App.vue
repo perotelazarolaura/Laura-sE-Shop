@@ -1,28 +1,37 @@
 
 <template>
-  <router-view />
+  <div id="#app">
+    <NavBar title="Welcome to Laura's Shop!" :isLogged="isLogged"/>
+    <router-view />
+  </div>
 </template>
 
 <script lang="ts">
-// @ is an alias to /src
-import authUser from './APIactions/actions'
 
-export default {
-  methods: {
-    goHome () {
-      // this.$route.push({ name: 'home' })
-    },
-    goAbout () {
-      // this.$route.push({ name: 'about' })
-    },
-    goProducts () {
-      // this.$route.push({ name: 'product' })
-    },
-    async goLogin () {
-      await authUser('john@mail.com', 'changeme')
+import NavBar from '@/components/NavBar.vue'
+import { defineComponent, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+
+export default defineComponent({
+  components: {
+    NavBar
+  },
+  setup () {
+    const store = useStore()
+    const router = useRouter()
+    const isLogged = computed(() => { return store.state.authData != null })
+    // If the user isn't loged in he can only be in the login page.
+    onMounted(() => {
+      if (!isLogged.value) {
+        router.push({ name: 'signin' })
+      }
+    })
+    return {
+      isLogged
     }
   }
-}
+})
 </script>
 
 <style lang="scss">
