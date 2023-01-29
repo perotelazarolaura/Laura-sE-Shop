@@ -8,9 +8,9 @@
 
 <script lang="ts">
 
+import './assets/css/main.css'
 import NavBar from '@/components/NavBar.vue'
-import { defineComponent, computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
 
 export default defineComponent({
@@ -19,14 +19,8 @@ export default defineComponent({
   },
   setup () {
     const store = useStore()
-    const router = useRouter()
     const isLogged = computed(() => { return store.state.authData != null })
     // If the user isn't loged in he can only be in the login page.
-    onMounted(() => {
-      if (!isLogged.value) {
-        router.push({ name: 'signin' })
-      }
-    })
     return {
       isLogged
     }

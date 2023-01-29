@@ -1,21 +1,21 @@
 <template>
   <nav>
-    <div class="title">
-      <h4>{{ title }}</h4>
-    </div>
-    <div v-if="isLogged" class="links">
-      <button @click="goProducts()" class="btn btn-primary">
+    <h1 class="title">{{ title }}</h1>
+    <div class="navbar">
+      <button @click="goProducts()">
         Products
       </button>
-      <button @click="goProfile()" class="btn btn-primary">
-        Profile
-      </button>
-      <button v-if="!isLogged" @click="goSignIn()" class="btn btn-primary">
+      <button v-if="!isLogged" @click="goSignIn()">
         SignIn
       </button>
-      <button v-else @click="signOut()" class="btn btn-primary">
-        SignOut
-      </button>
+      <template v-else>
+        <button @click="goProfile()">
+          Profile
+        </button>
+        <button @click="signOut()">
+          SignOut
+        </button>
+      </template>
     </div>
   </nav>
 </template>
@@ -60,3 +60,31 @@ export default defineComponent({
   }
 })
 </script>
+<style scoped>
+.title {
+  text-align: left;
+}
+.navbar {
+  display: flex;
+  height: 50px;
+  background-color: #aaccff;
+}
+.navbar > button {
+  color: #fff;
+  background-color: #0095ff;
+  border-width: 0px;
+  height: 100%;
+  margin: 0px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.navbar > button:hover {
+  background-color: #07c;
+}
+.navbar > button:active {
+  background-color: #0064bd;
+}
+.navbar > button:last-child {
+  margin-left: auto;
+}
+</style>
